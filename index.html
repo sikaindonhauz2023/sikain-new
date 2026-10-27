@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171717">
+  <meta name="description" content="SIKAIN food menu, orders and business tracker">
+  <title>SIKAIN | Food Menu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <img id="business-logo" alt="Business logo" hidden>
+      <span id="business-name">SIKAIN</span>
+    </a>
+    <button id="login-open" class="secondary">Admin Login</button>
+    <button id="logout-button" class="secondary" hidden>Logout</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">WELCOME TO</p>
+        <h1 id="hero-title">SIKAIN</h1>
+        <p id="hero-description">Masarap na pagkain, sulit sa bawat kagat.</p>
+        <p id="business-address">
+          19 Manalili St., Central Signal Village, Taguig City
+        </p>
+      </div>
+      <img id="banner-image" alt="SIKAIN banner" hidden>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">OUR MENU</p>
+          <h2>Available Meals</h2>
+        </div>
+        <input id="menu-search" type="search"
+          placeholder="Search menu..." aria-label="Search menu">
+      </div>
+      <div id="menu-grid" class="menu-grid">
+        <p>Loading menu...</p>
+      </div>
+    </section>
+
+    <section id="admin-panel" class="section admin-panel" hidden>
+      <p class="eyebrow">MANAGEMENT</p>
+      <h2>Admin Dashboard</h2>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span>Today's Sales</span>
+          <strong id="today-sales">₱0.00</strong>
+        </article>
+        <article class="stat-card">
+          <span>Orders Today</span>
+          <strong id="today-orders">0</strong>
+        </article>
+      </div>
+
+      <div class="admin-tabs">
+        <button data-tab="products" class="tab active">Menu</button>
+        <button data-tab="sales" class="tab">Sales Tracker</button>
+        <button data-tab="settings" class="tab">Settings</button>
+      </div>
+
+      <section id="products-tab" class="tab-content">
+        <h3>Add Menu Item</h3>
+        <form id="product-form" class="form-grid">
+          <input id="product-id" type="hidden">
+          <label>
+            Product name
+            <input id="product-name" required maxlength="100"
+              placeholder="e.g. DONTAPA">
+          </label>
+          <label>
+            Price (₱)
+            <input id="product-price" type="number" required
+              min="0.01" step="0.01" placeholder="69">
+          </label>
+          <label class="full-width">
+            Description
+            <textarea id="product-description" maxlength="500"
+              placeholder="Meal description"></textarea>
+          </label>
+          <label class="full-width">
+            Menu picture
+            <input id="product-image" type="file" accept="image/*">
+          </label>
+          <label class="check-label">
+            <input id="product-available" type="checkbox" checked>
+            Available for customers
+          </label>
+          <div class="form-actions full-width">
+            <button type="submit">Save Menu Item</button>
+            <button type="button" id="cancel-edit" class="secondary">
+              Cancel
+            </button>
+          </div>
+        </form>
+
+        <h3>Menu Management</h3>
+        <div id="admin-products"></div>
+
+        <h3>Trash / Deleted Items</h3>
+        <div id="deleted-products"></div>
+      </section>
+
+      <section id="sales-tab" class="tab-content" hidden>
+        <h3>Record a Sale</h3>
+        <form id="sale-form" class="form-grid">
+          <label class="full-width">
+            Menu item
+            <select id="sale-product" required></select>
+          </label>
+          <label>
+            Quantity
+            <input id="sale-quantity" type="number" min="1"
+              step="1" value="1" required>
+          </label>
+          <label>
+            Payment method
+            <select id="sale-payment">
+              <option value="Cash">Cash</option>
+              <option value="GCash">GCash</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <button type="submit" class="full-width">Record Sale</button>
+        </form>
+
+        <h3>Sales History</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Receipt</th>
+              </tr>
+            </thead>
+            <tbody id="sales-history"></tbody>
+          </table>
+        </div>
+        <button id="export-sales" class="secondary">Export CSV</button>
+      </section>
+
+      <section id="settings-tab" class="tab-content" hidden>
+        <h3>Business Website Settings</h3>
+        <form id="settings-form" class="form-grid">
+          <label class="full-width">
+            Business name
+            <input id="setting-name" required maxlength="100">
+          </label>
+          <label class="full-width">
+            Tagline
+            <input id="setting-tagline" maxlength="200">
+          </label>
+          <label class="full-width">
+            Business address
+            <input id="setting-address" maxlength="300">
+          </label>
+          <label>
+            Main color
+            <input id="setting-color" type="color" value="#f59e0b">
+          </label>
+          <label>
+            Text color
+            <input id="setting-text-color" type="color" value="#171717">
+          </label>
+          <label class="full-width">
+            Logo image
+            <input id="setting-logo" type="file" accept="image/*">
+          </label>
+          <label class="full-width">
+            Banner image
+            <input id="setting-banner" type="file" accept="image/*">
+          </label>
+          <button type="submit" class="full-width">Save Settings</button>
+        </form>
+
+        <div class="map-card">
+          <h3>Business Location</h3>
+          <p>19 Manalili St., Central Signal Village, Taguig City</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=19+Manalili+St+Central+Signal+Village+Taguig+City"
+             target="_blank" rel="noopener noreferrer">
+            Open location in Google Maps
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="login-dialog">
+    <form id="login-form">
+      <h2>Admin Login</h2>
+      <label>
+        Email
+        <input id="login-email" type="email" autocomplete="username"
+          required>
+      </label>
+      <label>
+        Password
+        <input id="login-password" type="password"
+          autocomplete="current-password" required>
+      </label>
+      <p id="login-message" role="status"></p>
+      <div class="form-actions">
+        <button type="submit">Login</button>
+        <button type="button" id="login-cancel" class="secondary">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="receipt-dialog">
+    <div id="receipt-content" class="receipt"></div>
+    <div class="form-actions no-print">
+      <button id="print-receipt">Print Receipt</button>
+      <button id="receipt-close" class="secondary">Close</button>
+    </div>
+  </dialog>
+
+  <footer>
+    <p>© <span id="year"></span> SIKAIN. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
