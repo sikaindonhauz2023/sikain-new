@@ -118,13 +118,34 @@
   }
 
   function bindEvents() {
-    $("login-open")?.addEventListener("click", () => {
-      if ($("login-dialog")?.showModal) {
-        $("login-dialog").showModal();
-      } else {
-        show("login-dialog");
-      }
-    });
+    
+$("login-open")?.addEventListener("click", () => {
+  const dialog = $("login-dialog");
+
+  if (!dialog) {
+    alert("Hindi makita ang login-dialog. Suriin ang index.html.");
+    return;
+  }
+
+  if (typeof dialog.showModal === "function") {
+    dialog.showModal();
+  } else {
+    dialog.hidden = false;
+    dialog.style.display = "block";
+  }
+});
+
+$("login-cancel")?.addEventListener("click", () => {
+  const dialog = $("login-dialog");
+  if (!dialog) return;
+
+  if (typeof dialog.close === "function") {
+    dialog.close();
+  } else {
+    dialog.hidden = true;
+    dialog.style.display = "none";
+  }
+});
 
     $("login-form")?.addEventListener("submit", login);
     $("logout-button")?.addEventListener("click", logout);
