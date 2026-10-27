@@ -1,4 +1,3 @@
-
 (() => {
   "use strict";
 
@@ -34,6 +33,7 @@
   let currentRole = null;
   let products = [];
   let sales = [];
+  let cart = [];
   let settings = null;
   let editingProductId = null;
 
