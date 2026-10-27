@@ -13,6 +13,49 @@
 
 
 <body>
+  
+<!-- CHECKOUT PAGE -->
+<section id="checkout-page" hidden>
+  <h2>Checkout</h2>
+  <div id="checkout-items">Wala pang item sa cart.</div>
+  <p>Total: <strong id="checkout-total">₱0.00</strong></p>
+
+  <form id="checkout-form">
+    <label for="checkout-name">Pangalan</label>
+    <input id="checkout-name" required maxlength="100">
+
+    <label for="checkout-phone">Contact Number</label>
+    <input id="checkout-phone" type="tel" required maxlength="20">
+
+    <label for="checkout-method">Order Type</label>
+    <select id="checkout-method" required>
+      <option value="Pickup">Pickup</option>
+      <option value="Delivery">Delivery</option>
+    </select>
+
+    <label for="checkout-address">Delivery Address / Notes</label>
+    <textarea id="checkout-address" maxlength="500"></textarea>
+
+    <button type="submit">Place Order</button>
+    <button type="button" id="checkout-back">Back to Menu</button>
+  </form>
+</section>
+
+<!-- CUSTOMER ORDERS PAGE -->
+<section id="my-orders-page" hidden>
+  <h2>My Orders</h2>
+  <p>Ilagay ang phone number na ginamit sa pag-order.</p>
+
+  <form id="find-orders-form">
+    <input id="find-orders-phone" type="tel"
+      placeholder="Contact number" required>
+    <button type="submit">Check Orders</button>
+  </form>
+
+  <div id="my-orders-list"></div>
+  <button type="button" id="orders-back">Back to Menu</button>
+</section>
+
   <header class="topbar">
     <a class="brand" href="#">
       <img id="business-logo" alt="Business logo" hidden>
