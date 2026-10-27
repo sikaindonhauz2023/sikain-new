@@ -1,5 +1,5 @@
 
 window.SIKAIN_CONFIG = {
-  SUPABASE_URL: "sb_publishable_miz5_kCpEosKGeX1FumbNg_IjjvYBiw",
+  SUPABASE_URL: "https://supabase.com/dashboard/project/deqfxdidkawmqzueenkx/settings/api-keys",
   SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlcWZ4ZGlka2F3bXF6dWVlbmt4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxMDE3ODUsImV4cCI6MjEwODY3Nzc4NX0.c7gGwhHYOLSFQbpBFbffqWd997PLzZVaTK_2kutJSCQ"
 };
